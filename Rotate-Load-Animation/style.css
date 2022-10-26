@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 设置为 content-box 则 对一个元素设置的宽高（在这里只包括其 content 部分的宽高） + 其 border 和 padding 产生的额外宽高 = 该元素在页面中的实际宽高 */
+    /* 设置为 border-box 则 对一个元素设置的宽高（在这里包括 content + border + padding 的宽高） = 该元素在页面中的实际宽高 */
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25252d;
+}
+
+.loader {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    /* background-color: aliceblue; */
+    perspective: 800px;
+    /* perspective 属性指定了观察者与 z=0 平面的距离，使具有三维位置变换的元素产生透视效果。z>0 的三维元素比正常大，而 z<0 时则比正常小，大小程度由该属性的值决定 */
+    /* 三维元素在观察者后面的部分不会绘制出来，即 z 轴坐标值大于 perspective 属性值的部分。 */
+}
+
+.loader .loader-item {
+    position: absolute;
+    width: 66%;
+    height: 66%;
+    border-radius: 50%;
+}
+
+.loader .loader-item:nth-child(1) {
+    border-bottom: 8px solid #71e3fd;
+    transform: rotateX(35deg) rotateY(-45deg);
+    /* 借助元素的一侧边框，通过设置弧度和旋转角度来实现需要的线条效果 */
+    animation: loader-item-one 1.2s linear infinite;
+}
+
+@keyframes loader-item-one {
+    to {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+
+.loader .loader-item:nth-child(2) {
+    border-right: 8px solid #f552fb;
+    transform: rotateX(50deg) rotateY(10deg);
+    /* 借助元素的一侧边框，通过设置弧度和旋转角度来实现需要的线条效果 */
+    animation: loader-item-two 1.3s linear infinite;
+}
+
+@keyframes loader-item-two {
+    to {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+
+.loader .loader-item:nth-child(3) {
+    border-top: 8px solid #8a3ffb;
+    transform: rotateX(35deg) rotateY(55deg);
+    /* 借助元素的一侧边框，通过设置弧度和旋转角度来实现需要的线条效果 */
+    animation: loader-item-three 1.4s linear infinite;
+}
+
+@keyframes loader-item-three {
+    to {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+}
